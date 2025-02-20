@@ -1,7 +1,5 @@
 # GVAdmin
  A Gamevault admin panel proof of concept
-https://github.com/Toylerrr/GVAdmin/blob/main/images/Screenshot%202025-02-20%20090035.png?raw=true
-
 ![Image of the game managment window](/images/Screenshot%202025-02-20%20090035.png?raw=true)
 ![Image of the user managment window](images/Screenshot%202025-02-20%20090110.png?raw=true)
 
