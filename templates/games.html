@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Games - GameVault{% endblock %}
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header bg-primary text-white">
+        <h1 class="h4">Games List</h1>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            {% for game in games %}
+            <li class="list-group-item d-flex align-items-center">
+                <!-- Small cover image -->
+                {% if game['cover_url'] %}
+                <img
+                    src="{{ game['cover_url'] }}"
+                    alt="{{ game['title'] }} Cover"
+                    class="img-thumbnail me-3"
+                    style="width: 50px; height: 60px;">
+                {% else %}
+                <div class="bg-secondary text-white text-center me-3" style="width: 50px; height: 60px; line-height: 60px; border-radius: 5px;">
+                    <span>NA</span>
+                </div>
+                {% endif %}
+        
+                <!-- Game title -->
+                <div>
+                    <strong>{{ game['title'] }}</strong>
+                </div>
+        
+                <a href="{{ url_for('game_details', game_id=game['id']) }}" class="btn btn-primary btn-sm ms-auto">View Details</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

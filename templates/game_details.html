@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Game Details - GameVault{% endblock %}
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header bg-primary text-white">
+        <h1 class="h4">Game Details</h1>
+    </div>
+    <div class="card-body">
+        <!-- Current Game Details -->
+        <div class="row mb-4">
+            <!-- Display game cover image -->
+            {% if game['cover_url'] %}
+            <div class="col-md-4">
+                <img
+                    src="{{ game['cover_url'] }}"
+                    alt="Game Cover"
+                    class="img-fluid rounded shadow">
+            </div>
+            {% endif %}
+            <div class="col-md-8">
+                <h2 class="h5">Game Title: {{ game['title'] }}</h2>
+                <p><strong>Release Date:</strong> {{ game['release_date'] }}</p>
+                <p><strong>Description:</strong> {{ game['description'] }}</p>
+            </div>
+        </div>
+
+        <!-- Game Screenshots -->
+        {% if game['screenshots'] %}
+        <h2 class="h5 mt-4">Screenshots</h2>
+        <div class="row">
+            {% for screenshot in game['screenshots'] %}
+            <div class="col-md-4 mb-3">
+                <img
+                    src="{{ screenshot }}"
+                    alt="Screenshot"
+                    class="img-fluid rounded shadow">
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Update Form -->
+        <h2 class="h5 mt-4">Update Game Details</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="title"
+                    value="{{ game['title'] }}"
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label for="release_date" class="form-label">Release Date</label>
+                <input
+                    type="date"
+                    class="form-control"
+                    id="release_date"
+                    name="release_date"
+                    value="{{ game['release_date'] }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    rows="5"
+                    required>{{ game['description'] }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success">Update</button>
+            <a href="{{ url_for('get_games') }}" class="btn btn-secondary">Back to Games List</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

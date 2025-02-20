@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home - GameVault{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="mt-5">Welcome to the GameVault Admin Panel</h1>
+    <p class="lead">Manage games and users with ease!</p>
+
+    <div class="mt-4">
+        <a href="{{ url_for('get_games') }}" class="btn btn-primary btn-lg">Manage Games</a>
+        <a href="{{ url_for('get_users') }}" class="btn btn-secondary btn-lg">Manage Users</a>
+    </div>
+</div>
+{% endblock %}
